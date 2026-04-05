@@ -1,0 +1,53 @@
+{
+  "HER_NAME": "Hey Nisha 💌",
+  "QUESTION": "Will you be mine? 💖",
+  "BUILD_UP_MESSAGES": [
+    "My heart beats a little faster when you're around...",
+    "Every moment with you feels magical...",
+    "You're the most beautiful person I know...",
+    "I can't imagine my life without you...",
+    "This is the most important question I'll ever ask..."
+  ],
+  "TEASING_TEXTS": [
+    "Are you sure? 🥺",
+    "My heart is breaking... 💔",
+    "Try again? 👉👈",
+    "You're making me nervous! 😅",
+    "Please? 🥹",
+    "Just think about it... 💭",
+    "I'll keep asking! 💪"
+  ],
+  "FINAL_MESSAGES": [
+    "You just made my entire world brighter.",
+    "This is the beginning of something beautiful.",
+    "My heart is overflowing with happiness.",
+    "I promise to cherish every moment with you.",
+    "You're my dream come true. 💫"
+  ],
+  "GIFS": {
+    "MAIN": [
+      "gif1.gif",
+      "gif3c.gif",
+      "gif3b.gif",
+      "gif5.gif"
+    ],
+    "CELEBRATION": [
+      "gif2.gif",
+      "gif7.gif"
+    ]
+  },
+  "SOUNDS": {
+    "enabled": false,
+    "volumes": {
+      "click": 0.3,
+      "heart": 0.2,
+      "type": 0.1,
+      "celebrate": 0.4,
+      "tease": 0.3,
+      "no": 0.4,
+      "yes": 0.4,
+      "hover": 0.1
+    }
+  },
+  "musicUrl": "music.mp3"
+}

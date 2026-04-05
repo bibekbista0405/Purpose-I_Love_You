@@ -1,0 +1,162 @@
+[
+  {
+    "response": "yes",
+    "noClickCount": 0,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+    "screenSize": "1536x742",
+    "timestamp": "2026-04-02T02:21:57.359Z",
+    "id": "17750965173590xpghey4t"
+  },
+  {
+    "response": "yes",
+    "noClickCount": 0,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x730",
+    "timestamp": "2026-01-22T09:52:13.725Z",
+    "id": "17690755337252n2ruq4jc"
+  },
+  {
+    "response": "yes",
+    "noClickCount": 7,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:36.521Z",
+    "id": "1769075496521162zmd7re"
+  },
+  {
+    "response": "yes",
+    "noClickCount": 7,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:36.428Z",
+    "id": "17690754964284flcxwnvr"
+  },
+  {
+    "response": "no",
+    "noClickCount": 7,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:32.419Z",
+    "id": "17690754924192iu63lqf5"
+  },
+  {
+    "response": "no",
+    "noClickCount": 6,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:30.039Z",
+    "id": "176907549003980pgbxwn2"
+  },
+  {
+    "response": "no",
+    "noClickCount": 5,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:29.800Z",
+    "id": "1769075489800hneeonlre"
+  },
+  {
+    "response": "no",
+    "noClickCount": 4,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:26.144Z",
+    "id": "1769075486144akxv80xdf"
+  },
+  {
+    "response": "no",
+    "noClickCount": 3,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:25.924Z",
+    "id": "1769075485924f6fjzhy4m"
+  },
+  {
+    "response": "no",
+    "noClickCount": 2,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36",
+    "screenSize": "484x920",
+    "timestamp": "2026-01-22T09:51:21.240Z",
+    "id": "1769075481240sbx2hfyjx"
+  },
+  {
+    "response": "yes",
+    "noClickCount": 7,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:39.335Z",
+    "id": "17689929393359u4jotpeh"
+  },
+  {
+    "response": "no",
+    "noClickCount": 7,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:34.183Z",
+    "id": "17689929341836yakg3h3s"
+  },
+  {
+    "response": "no",
+    "noClickCount": 6,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:32.157Z",
+    "id": "17689929321579glb8db93"
+  },
+  {
+    "response": "no",
+    "noClickCount": 5,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:30.207Z",
+    "id": "176899293020755hmyza2o"
+  },
+  {
+    "response": "no",
+    "noClickCount": 4,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:28.907Z",
+    "id": "17689929289069wr8ydfwj"
+  },
+  {
+    "response": "no",
+    "noClickCount": 3,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:27.403Z",
+    "id": "176899292740321a5qdo3d"
+  },
+  {
+    "response": "no",
+    "noClickCount": 2,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:25.526Z",
+    "id": "1768992925526ftv37h59j"
+  },
+  {
+    "response": "no",
+    "noClickCount": 1,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T10:55:22.965Z",
+    "id": "1768992922964hysl7gptv"
+  },
+  {
+    "response": "yes",
+    "noClickCount": 1,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T06:30:31.229Z",
+    "id": "1768977031229kmhb0vksz"
+  },
+  {
+    "response": "no",
+    "noClickCount": 1,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+    "screenSize": "1536x695",
+    "timestamp": "2026-01-21T06:30:25.677Z",
+    "id": "1768977025677w6jplcrzz"
+  }
+]

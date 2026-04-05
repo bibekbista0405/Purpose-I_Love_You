@@ -1,0 +1,24 @@
+{
+  "verbose": false,
+  "ignore": [
+    "config.json",
+    "responses.json",
+    "default-config.json",
+    "node_modules/**",
+    ".git/**",
+    "*.log"
+  ],
+  "watch": [
+    "server.js",
+    "index.html",
+    "admin.html",
+    "start-dev.js"
+  ],
+  "ext": "js,html",
+  "exec": "node server.js",
+  "restartable": "rs",
+  "delay": 1000,
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

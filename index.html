@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For You 💗</title>
+
+    <!-- 🌸 Font for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink-main: #ff6f91;
+            --pink-soft: #ffc1cc;
+            --pink-dark: #ff4d6d;
+            --gold-light: #FFD700;
+            --gold-dark: #FFA500;
+            --glass: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", system-ui, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 20%, #ffd1dc 0%, var(--pink-main) 70%, var(--pink-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            touch-action: pan-y;
+        }
+
+        /* ✨ Animated Background Rays */
+        .light-rays {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 45%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    transparent 55%);
+            background-size: 300% 300%;
+            animation: rays-move 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes rays-move {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* 🌸 Floating Background Elements */
+        .float-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 25s infinite linear;
+        }
+
+        .float-element:nth-child(2n) {
+            animation-direction: reverse;
+            animation-duration: 30s;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(30px, 50px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(0, 100px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-30px, 50px) rotate(270deg);
+            }
+        }
+
+        /* 💌 Main Container */
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        /* 🌸 Glass Card */
+        .card {
+            width: 100%;
+            max-width: 400px;
+            padding: 35px 28px;
+            border-radius: 32px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow:
+                0 40px 80px var(--shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            text-align: center;
+            animation: cardEnter 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-origin: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.6),
+                    transparent);
+        }
+
+        @keyframes cardEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(80px) scale(0.9) rotateX(10deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0);
+            }
+        }
+
+        .card-exit {
+            animation: cardExit 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes cardExit {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+        }
+
+        /* 💖 Name Animation */
+        .name-container {
+            margin-bottom: 15px;
+            min-height: 40px;
+            position: relative;
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .name-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 30px;
+            background-color: #fff;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* 📝 Messages */
+        .message {
+            margin-top: 10px;
+            color: #fff;
+            opacity: 0.95;
+            font-size: 16px;
+            line-height: 1.5;
+            animation: messageFadeIn 1s 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes messageFadeIn {
+            to {
+                opacity: 0.95;
+                transform: translateY(0);
+            }
+        }
+
+        /* ✨ TEASING TEXT HIGHLIGHT EFFECTS ✨ */
+        .teasing-text {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 12px;
+            min-height: 28px;
+            padding: 12px 20px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            max-width: 90%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            animation: teaseEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+        }
+
+        @keyframes teaseEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Different highlight styles for each tease */
+        .tease-0 {
+            background: linear-gradient(135deg, rgba(255, 111, 145, 0.9) 0%, rgba(255, 77, 109, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: teasePulse 2s infinite;
+        }
+
+        .tease-1 {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.9) 0%, rgba(255, 61, 61, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: heartBreak 1.5s infinite;
+        }
+
+        .tease-2 {
+            background: linear-gradient(135deg, rgba(255, 209, 220, 0.9) 0%, rgba(255, 182, 193, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: var(--pink-dark);
+            animation: gentleBounce 2s infinite;
+        }
+
+        .tease-3 {
+            background: linear-gradient(135deg, rgba(255, 241, 118, 0.9) 0%, rgba(255, 221, 51, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #333;
+            animation: nervousShake 0.5s infinite;
+        }
+
+        .tease-4 {
+            background: linear-gradient(135deg, rgba(173, 216, 230, 0.9) 0%, rgba(135, 206, 250, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: #1a5276;
+            animation: pleasePulse 1.8s infinite;
+        }
+
+        .tease-5 {
+            background: linear-gradient(135deg, rgba(200, 230, 201, 0.9) 0%, rgba(165, 214, 167, 0.9) 100%);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            color: #1b5e20;
+            animation: thinkFloat 3s infinite;
+        }
+
+        .tease-6 {
+            background: linear-gradient(135deg, rgba(255, 204, 128, 0.9) 0%, rgba(255, 153, 51, 0.9) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #663300;
+            font-weight: 700;
+            animation: strongPulse 1.2s infinite;
+        }
+
+        /* Teasing animations */
+        @keyframes teasePulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 111, 145, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(255, 111, 145, 0.6);
+            }
+        }
+
+        @keyframes heartBreak {
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            25% {
+                transform: scale(1.05) rotate(-3deg);
+            }
+
+            75% {
+                transform: scale(1.05) rotate(3deg);
+            }
+        }
+
+        @keyframes gentleBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes nervousShake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-3px);
+            }
+
+            75% {
+                transform: translateX(3px);
+            }
+        }
+
+        @keyframes pleasePulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes thinkFloat {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-3px) scale(1.02);
+            }
+        }
+
+        @keyframes strongPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 153, 51, 0.4);
+            }
+
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 15px 35px rgba(255, 153, 51, 0.7);
+            }
+        }
+
+        /* Sparkle effect for teasing texts */
+        .teasing-text::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    transparent 70%);
+            animation: sparkle 3s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(360deg);
+            }
+        }
+
+        /* 🎭 GIF Container */
+        .gif-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 25px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            animation: gifFloat 4s ease-in-out infinite;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes gifFloat {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-10px) rotate(0.5deg);
+            }
+
+            66% {
+                transform: translateY(5px) rotate(-0.5deg);
+            }
+        }
+
+        .gif {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gif:hover {
+            transform: scale(1.05);
+        }
+
+        /* 💗 Question */
+        .question {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        /* 💕 Buttons */
+        .actions {
+            margin-top: 35px;
+            position: relative;
+            min-height: 140px;
+        }
+
+        button {
+            border: none;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .yes {
+            background: linear-gradient(135deg, #fff 0%, #ffe6ec 100%);
+            color: var(--pink-dark);
+            box-shadow:
+                0 10px 30px rgba(255, 111, 145, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            z-index: 10;
+            position: relative;
+            transform: translateY(0);
+        }
+
+        .yes:not(.disabled):hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 35px rgba(255, 111, 145, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .yes:active {
+            transform: translateY(0) scale(0.97);
+        }
+
+        .yes.disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            animation: none;
+            transform: none !important;
+        }
+
+        .no {
+            background: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
+            z-index: 5;
+        }
+
+        .no:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .no:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* 🎉 Celebration */
+        .hidden {
+            display: none !important;
+        }
+
+        .celebrate {
+            animation: celebrateEnter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes celebrateEnter {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotateY(90deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0);
+            }
+        }
+
+        .celebrate h1 {
+            color: #fff;
+            font-size: 32px;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                    0 2px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                    0 2px 20px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .final-message {
+            color: #fff;
+            opacity: 0.95;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 25px;
+            min-height: 28px;
+        }
+
+        .final-message .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 24px;
+            background-color: #fff;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        /* 📱 Share Button */
+        .share-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 14px 28px;
+            margin-top: 25px;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* ✨ Effects Layers */
+        .effects-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 💖 Floating Hearts */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: heartFloat 4.5s linear forwards;
+            opacity: 0;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* 🎊 Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 16px;
+            opacity: 0;
+            animation: confettiFall 2.5s ease-out forwards;
+            border-radius: 2px;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* 🎆 Fireworks */
+        .firework {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: fireworkBoom 1.2s ease-out forwards;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes fireworkBoom {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(15);
+                opacity: 0;
+            }
+        }
+
+        /* 💓 Heartbeat Indicator */
+        .heartbeat {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+            animation: heartbeat 1.2s infinite;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .heartbeat.visible {
+            opacity: 1;
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* 📝 Build-up Message */
+        .build-up {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin-top: 15px;
+            font-style: italic;
+            min-height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* 🎵 Music Toggle */
+        .music-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .music-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* 🔧 Admin Toggle */
+        .admin-toggle {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .admin-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* 🚫 Loading Screen */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, #ffd1dc 0%, var(--pink-main) 70%, var(--pink-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-heart {
+            font-size: 60px;
+            animation: loaderHeartbeat 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes loaderHeartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        .loader-text {
+            color: #fff;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* 📱 Mobile Optimizations */
+        @media (max-width: 480px) {
+            .card {
+                padding: 28px 22px;
+                border-radius: 28px;
+                max-width: 340px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .teasing-text {
+                font-size: 15px;
+                padding: 10px 16px;
+                max-width: 95%;
+            }
+
+            .gif-container {
+                width: 160px;
+                height: 160px;
+            }
+
+            button {
+                padding: 16px 32px;
+                font-size: 17px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+
+            .celebrate h1 {
+                font-size: 28px;
+            }
+
+            .admin-toggle {
+                top: 70px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                padding: 24px 18px;
+                max-width: 300px;
+            }
+
+            .teasing-text {
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+
+            button {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+        }
+
+        /* ⚡ Performance Optimizations */
+        .will-change {
+            will-change: transform, opacity;
+        }
+
+        /* 🎨 Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ✨ Music Start Overlay */
+        #musicStartOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 111, 145, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 1s ease;
+        }
+
+        /* Music Controls */
+        .music-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .music-controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .music-controls button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .music-progress {
+            width: 150px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .music-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--pink-main);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Music Loading Animation */
+        .music-loading {
+            display: inline-flex;
+            gap: 2px;
+            align-items: flex-end;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        .music-loading-bar {
+            width: 3px;
+            background: var(--pink-main);
+            animation: musicLoading 1s infinite ease-in-out;
+        }
+
+        .music-loading-bar:nth-child(1) { animation-delay: 0s; height: 10px; }
+        .music-loading-bar:nth-child(2) { animation-delay: 0.1s; height: 15px; }
+        .music-loading-bar:nth-child(3) { animation-delay: 0.2s; height: 20px; }
+        .music-loading-bar:nth-child(4) { animation-delay: 0.3s; height: 15px; }
+        .music-loading-bar:nth-child(5) { animation-delay: 0.4s; height: 10px; }
+
+        @keyframes musicLoading {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.5); }
+        }
+
+        /* Music Status Indicator */
+        .music-status {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .music-status.show {
+            opacity: 1;
+        }
+
+        #musicInstruction {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: fadeInUp 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 🚫 Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-heart">💖</div>
+        <div class="loader-text">Loading the love...</div>
+    </div>
+
+    <!-- ✨ Music Start Overlay - Appears First -->
+    <div id="musicStartOverlay">
+        <div style="font-size: 48px; margin-bottom: 20px; animation: heartbeat 1.2s infinite;">💖</div>
+        <h2 style="font-size: 24px; margin-bottom: 15px; font-weight: 600;">Let's Set the Mood</h2>
+        <p style="font-size: 16px; margin-bottom: 30px; opacity: 0.9; max-width: 300px;">
+            Tap anywhere to start this special moment...
+        </p>
+        <div style="font-size: 14px; opacity: 0.7; margin-top: 20px;">
+            Interactive sounds and music will play
+        </div>
+        <div style="margin-top: 30px; padding: 12px 24px; background: rgba(255, 255, 255, 0.2); 
+             border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.3); 
+             backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease;"
+             id="startMusicBtn">
+            Start Music & Sounds 🎵
+        </div>
+    </div>
+
+    <!-- ✨ Animated Background -->
+    <div class="light-rays"></div>
+
+    <!-- 💓 Heartbeat Indicator -->
+    <div class="heartbeat" id="heartbeat">💓</div>
+
+    <!-- 🎵 Music Toggle -->
+    <div class="music-toggle" id="musicToggle" style="display: none;">
+        <span id="musicIcon">🎵</span>
+    </div>
+
+    <!-- 🔧 Admin Toggle -->
+    <div class="admin-toggle" id="adminToggle" style="display: none;">
+        <span>⚙️</span>
+    </div>
+
+    <!-- 💌 Main Container -->
+    <div class="container">
+        <!-- 🌸 Floating Background Elements -->
+        <div id="floatElements"></div>
+
+        <!-- ✨ Effects Layers -->
+        <div class="effects-layer" id="hearts"></div>
+        <div class="effects-layer" id="confetti"></div>
+        <div class="effects-layer" id="fireworks"></div>
+
+        <!-- 💌 Main Card -->
+        <div class="card" id="mainCard" style="display: none;">
+            <div class="name-container">
+                <span class="name" id="name"></span>
+                <span class="name-cursor"></span>
+            </div>
+
+            <div class="message" id="message">I've been wanting to ask you something special...</div>
+
+            <div class="build-up" id="buildUp"></div>
+
+            <div class="gif-container" id="gifContainer">
+                <img class="gif" id="mainGif" src="gif1.gif" alt="Cute animated heart">
+            </div>
+
+            <!-- Teasing text will be inserted here -->
+            <div id="teasingTextContainer"></div>
+
+            <div class="question" id="question">Will you be mine? 💖</div>
+
+            <div class="actions" id="actions">
+                <button class="yes disabled" id="yesBtn">Getting ready... 💗</button>
+                <button class="no" id="noBtn">Maybe later 🙈</button>
+            </div>
+        </div>
+
+        <!-- 🎉 Celebration Card -->
+        <div class="card celebrate hidden" id="celebrateCard" style="display: none;">
+            <h1>Yay! You Said Yes! 💖</h1>
+
+            <div class="gif-container">
+                <img class="gif" id="celebrationGif" src="gif2.gif" alt="Celebration animation">
+            </div>
+
+            <div class="final-message" id="finalMessage">
+                <span id="finalText"></span>
+                <span class="cursor"></span>
+            </div>
+
+            <button class="share-btn" id="shareBtn">
+                Share This Moment 💌
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 🎯 CONFIGURATION - Will be loaded from server
+        let CONFIG = {};
+
+        // 🔊 Audio Context for Web Audio API
+        let audioContext = null;
+        let gainNodes = {};
+        let musicAudio = null;
+        let isMusicPlaying = false;
+        let isMusicLoaded = false;
+
+        // Simple sound effects (fallback if Web Audio API fails)
+        const simpleSounds = {
+            click: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 800;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.click || 0.3;
+                    osc.start();
+                    osc.stop(audioContext.currentTime + 0.1);
+                } catch (e) {
+                    console.log('Click sound failed:', e);
+                }
+            },
+            heart: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 120;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.heart || 0.2;
+                    osc.start();
+                    osc.stop(audioContext.currentTime + 0.3);
+                } catch (e) {
+                    console.log('Heart sound failed:', e);
+                }
+            },
+            type: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 600 + Math.random() * 200;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.type || 0.1;
+                    osc.start();
+                    osc.stop(audioContext.currentTime + 0.05);
+                } catch (e) {
+                    console.log('Type sound failed:', e);
+                }
+            },
+            celebrate: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc1 = audioContext.createOscillator();
+                    const osc2 = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc1.connect(gain);
+                    osc2.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc1.frequency.value = 523.25; // C5
+                    osc2.frequency.value = 659.25; // E5
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.celebrate || 0.4;
+                    osc1.start();
+                    osc2.start();
+                    osc1.stop(audioContext.currentTime + 0.5);
+                    osc2.stop(audioContext.currentTime + 0.5);
+                } catch (e) {
+                    console.log('Celebrate sound failed:', e);
+                }
+            },
+            tease: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 300;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.tease || 0.3;
+                    osc.start();
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                    osc.stop(audioContext.currentTime + 0.3);
+                } catch (e) {
+                    console.log('Tease sound failed:', e);
+                }
+            },
+            no: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 200;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.no || 0.4;
+                    osc.start();
+                    osc.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.2);
+                    osc.stop(audioContext.currentTime + 0.2);
+                } catch (e) {
+                    console.log('No sound failed:', e);
+                }
+            },
+            yes: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 200;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.yes || 0.4;
+                    osc.start();
+                    osc.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+                    osc.stop(audioContext.currentTime + 0.3);
+                } catch (e) {
+                    console.log('Yes sound failed:', e);
+                }
+            },
+            hover: () => {
+                if (!audioContext || audioContext.state !== 'running') return;
+                try {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = 400;
+                    gain.gain.value = CONFIG.SOUNDS?.volumes?.hover || 0.1;
+                    osc.start();
+                    osc.stop(audioContext.currentTime + 0.05);
+                } catch (e) {
+                    console.log('Hover sound failed:', e);
+                }
+            }
+        };
+
+        // 🔊 Play sound effect
+        function playSound(soundName) {
+            if (!CONFIG.SOUNDS?.enabled) return;
+            
+            try {
+                if (audioContext && audioContext.state === 'running') {
+                    simpleSounds[soundName]();
+                }
+            } catch (error) {
+                console.log('Sound play failed:', error);
+            }
+        }
+
+        // 📱 DOM Elements
+        const loader = document.getElementById('loader');
+        const musicStartOverlay = document.getElementById('musicStartOverlay');
+        const startMusicBtn = document.getElementById('startMusicBtn');
+        const mainCard = document.getElementById('mainCard');
+        const celebrateCard = document.getElementById('celebrateCard');
+        const nameEl = document.getElementById('name');
+        const messageEl = document.getElementById('message');
+        const buildUpEl = document.getElementById('buildUp');
+        const teasingTextContainer = document.getElementById('teasingTextContainer');
+        const questionEl = document.getElementById('question');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const mainGif = document.getElementById('mainGif');
+        const celebrationGif = document.getElementById('celebrationGif');
+        const finalTextEl = document.getElementById('finalText');
+        const shareBtn = document.getElementById('shareBtn');
+        const heartbeat = document.getElementById('heartbeat');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const adminToggle = document.getElementById('adminToggle');
+        const floatElements = document.getElementById('floatElements');
+
+        // 🎮 State Variables
+        let noClickCount = 0;
+        let isYesAvailable = false;
+        let currentGifIndex = 0;
+        let buildUpIndex = 0;
+        let buildUpInterval;
+        let currentTeaseElement = null;
+        let isTyping = false;
+        let userInteracted = false;
+        let userWs = null;
+        let isPreviewMode = window.location.search.includes('preview');
+        let hasInitialized = false;
+        let isMusicStarted = false;
+
+        // 🚀 Initialize
+        async function init() {
+            if (hasInitialized) return;
+            hasInitialized = true;
+            
+            console.log('🚀 Initializing application...');
+            
+            // Initialize audio
+            await initializeAudio();
+            
+            // Load configuration from server
+            await loadConfig();
+            
+            createFloatElements();
+            
+            // Hide loader after everything is ready
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                
+                // Show music start overlay
+                showMusicStartOverlay();
+            }, 2000);
+        }
+
+        // Initialize Audio Context
+        async function initializeAudio() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Create gain nodes for different sound types
+                const soundTypes = ['click', 'heart', 'type', 'celebrate', 'tease', 'no', 'yes', 'hover'];
+                soundTypes.forEach(type => {
+                    gainNodes[type] = audioContext.createGain();
+                    gainNodes[type].connect(audioContext.destination);
+                });
+                
+                // Set initial volumes from config
+                updateSoundVolumes();
+                
+                console.log('✅ Audio initialized successfully');
+            } catch (error) {
+                console.error('❌ Failed to initialize audio:', error);
+            }
+        }
+
+        // Update sound volumes from config
+        function updateSoundVolumes() {
+            if (!CONFIG.SOUNDS || !gainNodes) return;
+            
+            const volumes = CONFIG.SOUNDS.volumes || {};
+            Object.keys(gainNodes).forEach(type => {
+                if (gainNodes[type] && volumes[type] !== undefined) {
+                    gainNodes[type].gain.value = volumes[type];
+                }
+            });
+        }
+
+        // Show music start overlay
+        function showMusicStartOverlay() {
+            if (isPreviewMode) {
+                // Skip overlay in preview mode
+                startExperience();
+                return;
+            }
+            
+            musicStartOverlay.style.display = 'flex';
+            
+            // Add click handler to the button
+            startMusicBtn.addEventListener('click', startExperience);
+            
+            // Also allow clicking anywhere on overlay
+            musicStartOverlay.addEventListener('click', (e) => {
+                if (e.target === musicStartOverlay) {
+                    startExperience();
+                }
+            });
+            
+            // Add tap anywhere instruction after a delay
+            setTimeout(() => {
+                createMusicInstruction();
+            }, 1000);
+        }
+
+        // Create music instruction
+        function createMusicInstruction() {
+            if (document.getElementById('musicInstruction') || userInteracted) return;
+            
+            const instruction = document.createElement('div');
+            instruction.id = 'musicInstruction';
+            instruction.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 20px;">👆</span>
+                    <span>Tap anywhere to start the experience...</span>
+                </div>
+            `;
+            document.body.appendChild(instruction);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                if (instruction.parentNode && !userInteracted) {
+                    instruction.style.opacity = '0';
+                    setTimeout(() => instruction.remove(), 500);
+                }
+            }, 5000);
+        }
+
+        // Start the full experience
+        async function startExperience() {
+            if (userInteracted) return;
+            
+            userInteracted = true;
+            console.log('🎬 Starting full experience...');
+            
+            // Play welcome sound
+            playSound('celebrate');
+            
+            // Start music
+            await startMusic();
+            
+            // Hide music overlay
+            musicStartOverlay.style.opacity = '0';
+            setTimeout(() => {
+                musicStartOverlay.style.display = 'none';
+            }, 500);
+            
+            // Remove instruction if exists
+            const instruction = document.getElementById('musicInstruction');
+            if (instruction) {
+                instruction.style.opacity = '0';
+                setTimeout(() => {
+                    if (instruction.parentNode) instruction.remove();
+                }, 300);
+            }
+            
+            // Show main interface
+            mainCard.style.display = 'block';
+            musicToggle.style.display = 'flex';
+            adminToggle.style.display = 'flex';
+            
+            // Start normal flow
+            setupMusicControls();
+            typeName();
+            loadInitialGif();
+            setupEventListeners();
+            connectWebSocket();
+        }
+
+        // Start music
+        async function startMusic() {
+            if (isMusicStarted) return;
+            isMusicStarted = true;
+            
+            try {
+                const musicUrl = CONFIG.musicUrl || 'music.mp3';
+                
+                // Resume audio context if suspended
+                if (audioContext && audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                    console.log('🎵 Audio context resumed');
+                }
+                
+                // Create audio element
+                musicAudio = new Audio(musicUrl);
+                musicAudio.loop = true;
+                musicAudio.volume = 0.5;
+                musicAudio.preload = 'auto';
+                
+                // Set up audio events
+                musicAudio.addEventListener('canplaythrough', () => {
+                    console.log('🎵 Music loaded and ready to play');
+                    isMusicLoaded = true;
+                    
+                    // Try to play music
+                    const playPromise = musicAudio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            console.log('🎵 Music started playing');
+                            isMusicPlaying = true;
+                            musicIcon.textContent = '🔊';
+                        }).catch(error => {
+                            console.log('⚠️ Music autoplay prevented:', error);
+                            // Show play button
+                            musicIcon.textContent = '▶️';
+                        });
+                    }
+                });
+                
+                musicAudio.addEventListener('error', (e) => {
+                    console.error('❌ Music loading error:', e);
+                    showMusicError();
+                });
+                
+                musicAudio.addEventListener('play', () => {
+                    isMusicPlaying = true;
+                    musicIcon.textContent = '🔊';
+                    console.log('▶️ Music playing');
+                });
+                
+                musicAudio.addEventListener('pause', () => {
+                    isMusicPlaying = false;
+                    musicIcon.textContent = '🔇';
+                    console.log('⏸️ Music paused');
+                });
+                
+                musicAudio.addEventListener('ended', () => {
+                    isMusicPlaying = false;
+                    musicIcon.textContent = '🔇';
+                    console.log('⏹️ Music ended');
+                });
+                
+                // Start loading
+                musicAudio.load();
+                
+            } catch (error) {
+                console.error('❌ Error starting music:', error);
+                showMusicError();
+            }
+        }
+
+        // Show music error
+        function showMusicError() {
+            console.log('⚠️ Music failed to load, showing error state');
+            musicIcon.textContent = '❌';
+            setTimeout(() => {
+                musicIcon.textContent = '🎵';
+            }, 2000);
+        }
+
+        // Setup music controls
+        function setupMusicControls() {
+            // Music toggle functionality
+            musicToggle.addEventListener('click', () => {
+                playSound('click');
+                
+                if (musicAudio && isMusicLoaded) {
+                    if (musicAudio.paused) {
+                        musicAudio.play().then(() => {
+                            musicIcon.textContent = '🔊';
+                            console.log('▶️ Music resumed');
+                        }).catch(e => {
+                            console.log('❌ Could not resume music:', e);
+                            musicIcon.textContent = '▶️';
+                        });
+                    } else {
+                        musicAudio.pause();
+                        musicIcon.textContent = '🔇';
+                        console.log('⏸️ Music paused');
+                    }
+                } else {
+                    // If music hasn't loaded yet, try to start it
+                    startMusic();
+                    musicIcon.textContent = '🔊';
+                }
+            });
+        }
+
+        // Load configuration from server
+        async function loadConfig() {
+            try {
+                const response = await fetch('/api/config');
+                const data = await response.json();
+                
+                if (data.success) {
+                    CONFIG = data.config;
+                    console.log('✅ Loaded config from server');
+                    
+                    // Apply sound settings
+                    updateSoundVolumes();
+                } else {
+                    loadDefaultConfig();
+                }
+            } catch (error) {
+                console.error('❌ Error loading config:', error);
+                loadDefaultConfig();
+            }
+        }
+
+        // Load default config if server fails
+        function loadDefaultConfig() {
+            CONFIG = {
+                HER_NAME: "Hey Bibek 💌",
+                BUILD_UP_MESSAGES: [
+                    "My heart beats a little faster when you're around...",
+                    "Every moment with you feels magical...",
+                    "You're the most beautiful person I know...",
+                    "I can't imagine my life without you...",
+                    "This is the most important question I'll ever ask..."
+                ],
+                TEASING_TEXTS: [
+                    "Are you sure? 🥺",
+                    "My heart is breaking... 💔",
+                    "Try again? 👉👈",
+                    "You're making me nervous! 😅",
+                    "Please? 🥹",
+                    "Just think about it... 💭",
+                    "I'll keep asking! 💪"
+                ],
+                FINAL_MESSAGES: [
+                    "You just made my entire world brighter.",
+                    "This is the beginning of something beautiful.",
+                    "My heart is overflowing with happiness.",
+                    "I promise to cherish every moment with you.",
+                    "You're my dream come true. 💫"
+                ],
+                QUESTION: "Will you be mine? 💖",
+                GIFS: {
+                    MAIN: ["gif1.gif", "gif3c.gif", "gif3b.gif", "gif5.gif"],
+                    CELEBRATION: ["gif2.gif", "gif7.gif"]
+                },
+                SOUNDS: {
+                    enabled: true,
+                    volumes: {
+                        click: 0.3,
+                        heart: 0.2,
+                        type: 0.1,
+                        celebrate: 0.4,
+                        tease: 0.3,
+                        no: 0.4,
+                        yes: 0.4,
+                        hover: 0.1
+                    }
+                },
+                musicUrl: "music.mp3"
+            };
+            console.log('📋 Loaded default config');
+        }
+
+        // ✨ Create floating background elements
+        function createFloatElements() {
+            const colors = [
+                'rgba(255, 255, 255, 0.1)',
+                'rgba(255, 193, 204, 0.15)',
+                'rgba(255, 111, 145, 0.1)'
+            ];
+
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const element = document.createElement('div');
+                    element.classList.add('float-element');
+                    element.style.width = `${Math.random() * 60 + 20}px`;
+                    element.style.height = element.style.width;
+                    element.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    element.style.left = `${Math.random() * 100}%`;
+                    element.style.top = `${Math.random() * 100}%`;
+                    element.style.animationDelay = `${Math.random() * 20}s`;
+                    floatElements.appendChild(element);
+                }, i * 100);
+            }
+        }
+
+        // ⌨️ Typewriter effect for name with sound
+        function typeName() {
+            let i = 0;
+            const name = CONFIG.HER_NAME || "Hey Bibek 💌";
+            isTyping = true;
+
+            function type() {
+                if (i < name.length) {
+                    nameEl.textContent += name.charAt(i);
+
+                    // Play typing sound randomly
+                    if (Math.random() > 0.3) {
+                        playSound('type');
+                    }
+
+                    i++;
+                    setTimeout(type, 110);
+                } else {
+                    nameEl.nextElementSibling.style.display = 'none';
+                    isTyping = false;
+                    
+                    // Start build-up sequence after typing name
+                    setTimeout(startBuildUpSequence, 500);
+                }
+            }
+
+            type();
+        }
+
+        // 🎭 Build-up sequence before YES becomes available
+        function startBuildUpSequence() {
+            buildUpIndex = 0;
+            clearInterval(buildUpInterval); // Clear any existing interval
+            
+            buildUpInterval = setInterval(() => {
+                if (buildUpIndex < CONFIG.BUILD_UP_MESSAGES.length) {
+                    buildUpEl.textContent = CONFIG.BUILD_UP_MESSAGES[buildUpIndex];
+                    buildUpEl.style.opacity = '0';
+                    buildUpEl.style.transform = 'translateY(10px)';
+                    
+                    // Play heartbeat sound for buildup messages
+                    if (buildUpIndex > 0) {
+                        playSound('heart');
+                    }
+                    
+                    setTimeout(() => {
+                        buildUpEl.style.transition = 'all 0.5s ease';
+                        buildUpEl.style.opacity = '1';
+                        buildUpEl.style.transform = 'translateY(0)';
+                    }, 10);
+                    
+                    buildUpIndex++;
+                    
+                    // On last message, enable YES button
+                    if (buildUpIndex === CONFIG.BUILD_UP_MESSAGES.length) {
+                        clearInterval(buildUpInterval);
+                        setTimeout(enableYesButton, 1000);
+                    }
+                }
+            }, 1500);
+        }
+
+        // 💖 Enable YES button with animation and sound
+        function enableYesButton() {
+            buildUpEl.textContent = "Now... will you be mine? 💖";
+            buildUpEl.style.fontSize = '16px';
+            buildUpEl.style.fontWeight = '600';
+            buildUpEl.style.opacity = '0.9';
+            
+            yesBtn.textContent = "Yes, Absolutely! 💗";
+            yesBtn.classList.remove('disabled');
+            isYesAvailable = true;
+            
+            // Play celebration sound
+            playSound('celebrate');
+            
+            // Add heartbeat animation and sound
+            heartbeat.classList.add('visible');
+            playSound('heart');
+            
+            // Repeat heartbeat sound
+            const heartbeatInterval = setInterval(() => {
+                if (heartbeat.classList.contains('visible')) {
+                    playSound('heart');
+                } else {
+                    clearInterval(heartbeatInterval);
+                }
+            }, 1200);
+            
+            // Pulse animation for YES button
+            yesBtn.style.animation = 'pulse 1.5s infinite';
+            
+            console.log('✅ Yes button enabled');
+        }
+
+        // 🖼️ Load initial GIF
+        function loadInitialGif() {
+            const gifs = CONFIG.GIFS?.MAIN || ["gif1.gif"];
+            if (gifs.length > 0) {
+                mainGif.src = gifs[0];
+            }
+        }
+
+        // 🖼️ Load random GIF
+        function loadRandomGif() {
+            const gifs = CONFIG.GIFS?.MAIN || ["gif1.gif"];
+            if (gifs.length === 0) return;
+            
+            currentGifIndex = (currentGifIndex + 1) % gifs.length;
+            const gifSrc = gifs[currentGifIndex];
+            
+            // Check if GIF exists
+            const img = new Image();
+            img.onload = function () {
+                mainGif.src = gifSrc;
+                playSound('click');
+                
+                // Bounce animation
+                mainGif.parentElement.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    mainGif.parentElement.style.transform = 'scale(1)';
+                }, 300);
+            };
+            img.onerror = function () {
+                // If GIF doesn't exist, use a fallback
+                console.warn(`❌ GIF not found: ${gifSrc}`);
+            };
+            img.src = gifSrc;
+        }
+
+        // 🌐 WebSocket Connection for Real-time Updates
+        function connectWebSocket() {
+            if (isPreviewMode) {
+                console.log('👁️ Preview mode - Using simulated WebSocket');
+                return;
+            }
+            
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}`;
+            
+            try {
+                userWs = new WebSocket(wsUrl);
+                
+                userWs.onopen = () => {
+                    console.log('✅ Connected to WebSocket server');
+                };
+                
+                userWs.onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        handleWebSocketMessage(data);
+                    } catch (error) {
+                        console.error('❌ Error parsing WebSocket message:', error);
+                    }
+                };
+                
+                userWs.onclose = () => {
+                    console.log('📴 WebSocket disconnected');
+                    // Only try to reconnect if not in preview mode
+                    if (!isPreviewMode) {
+                        setTimeout(connectWebSocket, 3000);
+                    }
+                };
+                
+                userWs.onerror = (error) => {
+                    console.error('❌ WebSocket error:', error);
+                };
+                
+            } catch (error) {
+                console.error('❌ Error creating WebSocket:', error);
+            }
+        }
+
+        function handleWebSocketMessage(data) {
+            switch (data.type) {
+                case 'config_updated':
+                    // Update local config with server config
+                    CONFIG = data.config;
+                    console.log('⚙️ Config updated from server');
+                    
+                    // Update UI elements with new config
+                    updateUIWithConfig();
+                    
+                    // Update sound volumes
+                    updateSoundVolumes();
+                    break;
+                    
+                case 'ping':
+                    // Respond to heartbeat
+                    if (userWs && userWs.readyState === WebSocket.OPEN) {
+                        userWs.send(JSON.stringify({ type: 'pong' }));
+                    }
+                    break;
+                    
+                case 'admin_connected':
+                    console.log('👨‍💼 Admin connected');
+                    break;
+            }
+        }
+
+        function updateUIWithConfig() {
+            // Update name if it hasn't been typed yet
+            if (!isTyping && nameEl.textContent !== CONFIG.HER_NAME) {
+                nameEl.textContent = CONFIG.HER_NAME;
+                nameEl.nextElementSibling.style.display = 'inline-block';
+            }
+            
+            // Update question
+            questionEl.textContent = CONFIG.QUESTION;
+            
+            // Update build-up messages if sequence hasn't started
+            if (buildUpIndex === 0 && buildUpEl.textContent !== CONFIG.BUILD_UP_MESSAGES[0]) {
+                buildUpEl.textContent = CONFIG.BUILD_UP_MESSAGES[0] || '';
+            }
+        }
+
+        // Log response to server
+        async function logResponse(responseType) {
+            const responseData = {
+                response: responseType,
+                noClickCount: noClickCount,
+                userAgent: navigator.userAgent,
+                screenSize: `${window.innerWidth}x${window.innerHeight}`,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Try WebSocket first
+            if (userWs && userWs.readyState === WebSocket.OPEN) {
+                userWs.send(JSON.stringify({
+                    type: 'user_response',
+                    data: responseData
+                }));
+                console.log(`📤 Sent ${responseType} response via WebSocket`);
+            } else {
+                // Fallback to HTTP API
+                try {
+                    const response = await fetch('/api/log-response', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(responseData)
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log(`📤 Sent ${responseType} response via HTTP API`);
+                    }
+                } catch (error) {
+                    console.error('❌ Error logging response:', error);
+                }
+            }
+        }
+
+        // 🖱️ Set up all event listeners
+        function setupEventListeners() {
+            // YES button
+            yesBtn.addEventListener('click', handleYesClick);
+            yesBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (isYesAvailable) {
+                    handleYesClick();
+                }
+            });
+            yesBtn.addEventListener('mouseenter', () => playSound('hover'));
+
+            // NO button
+            noBtn.addEventListener('mouseover', moveNoButton);
+            noBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                moveNoButton();
+                handleNoClick();
+            });
+            noBtn.addEventListener('click', handleNoClick);
+            noBtn.addEventListener('mouseenter', () => playSound('hover'));
+
+            // Admin toggle
+            adminToggle.addEventListener('click', () => {
+                playSound('click');
+                window.open('/admin.html', '_blank');
+            });
+            adminToggle.addEventListener('mouseenter', () => playSound('hover'));
+
+            // GIF click
+            mainGif.addEventListener('click', loadRandomGif);
+            mainGif.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                loadRandomGif();
+            });
+            mainGif.addEventListener('mouseenter', () => playSound('hover'));
+
+            // Share button
+            shareBtn.addEventListener('click', shareMoment);
+            shareBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                shareMoment();
+            });
+            shareBtn.addEventListener('mouseenter', () => playSound('hover'));
+
+            // Button hover sounds for all buttons
+            document.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('mouseenter', () => playSound('hover'));
+            });
+
+            // Handle preview mode messages from admin panel
+            if (isPreviewMode) {
+                console.log('👁️ Preview mode enabled - listening for messages');
+                window.addEventListener('message', (event) => {
+                    if (event.data.type === 'test_yes') {
+                        console.log('👁️ Preview: Testing Yes button');
+                        if (isYesAvailable) {
+                            handleYesClick();
+                        } else {
+                            // Skip build-up for testing
+                            clearInterval(buildUpInterval);
+                            enableYesButton();
+                            setTimeout(() => handleYesClick(), 500);
+                        }
+                    } else if (event.data.type === 'test_no') {
+                        console.log('👁️ Preview: Testing No button');
+                        handleNoClick();
+                    } else if (event.data.type === 'toggle_music') {
+                        console.log('👁️ Preview: Toggling music');
+                        playSound('click');
+                    } else if (event.data.type === 'simulate_user') {
+                        console.log('👁️ Preview: Simulating user interaction');
+                        userInteracted = true;
+                        // Start experience automatically
+                        startExperience();
+                    }
+                });
+            }
+        }
+
+        // 💖 YES Button Click Handler
+        async function handleYesClick() {
+            if (!isYesAvailable) return;
+
+            console.log('💖 Yes button clicked');
+            
+            // Play yes sound
+            playSound('yes');
+
+            // Remove any existing teasing text
+            if (currentTeaseElement) {
+                currentTeaseElement.remove();
+                currentTeaseElement = null;
+            }
+
+            // Stop heartbeat
+            heartbeat.classList.remove('visible');
+
+            // Log response to server
+            await logResponse('yes');
+
+            // Start celebration sequence
+            startCelebration();
+        }
+
+        // 😈 NO Button Click Handler
+        async function handleNoClick() {
+            noClickCount++;
+            console.log(`🙈 No button clicked (count: ${noClickCount})`);
+            
+            playSound('no');
+
+            // Clear any existing teasing text
+            if (currentTeaseElement) {
+                currentTeaseElement.remove();
+            }
+
+            // Get teasing text based on click count
+            const teaseIndex = Math.min(noClickCount - 1, CONFIG.TEASING_TEXTS.length - 1);
+            const teaseText = CONFIG.TEASING_TEXTS[teaseIndex] || "Please? 🥹";
+
+            // Create new teasing text element with highlighted style
+            currentTeaseElement = document.createElement('div');
+            currentTeaseElement.className = `teasing-text tease-${teaseIndex}`;
+            currentTeaseElement.textContent = teaseText;
+            currentTeaseElement.style.opacity = '0';
+            currentTeaseElement.style.transform = 'translateY(20px) scale(0.9)';
+
+            // Insert after GIF container
+            const gifContainer = document.getElementById('gifContainer');
+            gifContainer.parentNode.insertBefore(currentTeaseElement, gifContainer.nextSibling);
+
+            // Trigger entrance animation
+            setTimeout(() => {
+                currentTeaseElement.style.opacity = '1';
+                currentTeaseElement.style.transform = 'translateY(0) scale(1)';
+                currentTeaseElement.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }, 10);
+
+            // Play teasing sound
+            playSound('tease');
+
+            // Log response to server (with current noClickCount)
+            await logResponse('no');
+
+            // Make YES button more appealing
+            if (isYesAvailable) {
+                yesBtn.style.transform = 'scale(1.1)';
+                yesBtn.style.boxShadow = '0 15px 40px rgba(255, 111, 145, 0.6)';
+                setTimeout(() => {
+                    yesBtn.style.transform = 'scale(1)';
+                    yesBtn.style.boxShadow = '0 10px 30px rgba(255, 111, 145, 0.4)';
+                }, 300);
+            }
+
+            // Hide teasing text after delay
+            setTimeout(() => {
+                if (currentTeaseElement && currentTeaseElement.parentNode) {
+                    currentTeaseElement.style.opacity = '0';
+                    currentTeaseElement.style.transform = 'translateY(-20px) scale(0.9)';
+                    currentTeaseElement.style.transition = 'all 0.5s ease';
+
+                    setTimeout(() => {
+                        if (currentTeaseElement && currentTeaseElement.parentNode) {
+                            currentTeaseElement.remove();
+                            currentTeaseElement = null;
+                        }
+                    }, 500);
+                }
+            }, 3000);
+        }
+
+        // 🎮 Move NO button randomly
+        function moveNoButton() {
+            if (noClickCount > 3) {
+                const cardRect = mainCard.getBoundingClientRect();
+                const btnRect = noBtn.getBoundingClientRect();
+
+                const maxX = cardRect.width - btnRect.width - 40;
+                const maxY = cardRect.height - btnRect.height - 40;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = `${randomX}px`;
+                noBtn.style.top = `${randomY}px`;
+                noBtn.style.transform = 'translate(0, 0)';
+
+                playSound('click');
+            }
+        }
+
+        // 🎉 Celebration Sequence
+        function startCelebration() {
+            console.log('🎉 Starting celebration sequence');
+            
+            playSound('celebrate');
+
+            // Exit main card
+            mainCard.classList.add('card-exit');
+
+            // Start effects
+            createHearts();
+            createConfetti();
+            createFireworks();
+
+            // Load random celebration GIF
+            const celebrationGifs = CONFIG.GIFS?.CELEBRATION || ["gif2.gif"];
+            if (celebrationGifs.length > 0) {
+                const randomIndex = Math.floor(Math.random() * celebrationGifs.length);
+                const gifSrc = celebrationGifs[randomIndex];
+
+                // Check if GIF exists
+                const img = new Image();
+                img.onload = function () {
+                    celebrationGif.src = gifSrc;
+                };
+                img.onerror = function () {
+                    // If GIF doesn't exist, use a fallback
+                    console.warn(`❌ Celebration GIF not found: ${gifSrc}`);
+                };
+                img.src = gifSrc;
+            }
+
+            // Show celebration card after delay
+            setTimeout(() => {
+                mainCard.classList.add('hidden');
+                celebrateCard.style.display = 'block';
+                celebrateCard.classList.remove('hidden');
+
+                // Type final message
+                typeFinalMessage();
+
+                // Continue effects
+                continueCelebrationEffects();
+            }, 1000);
+        }
+
+        // 💖 Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const hearts = ['💖', '💗', '💓', '💕', '💘'];
+
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.fontSize = `${Math.random() * 20 + 16}px`;
+                    heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                    heartsContainer.appendChild(heart);
+
+                    if (i % 10 === 0) {
+                        playSound('heart');
+                    }
+
+                    setTimeout(() => {
+                        if (heart.parentNode) {
+                            heart.remove();
+                        }
+                    }, 4500);
+                }, i * 50);
+            }
+        }
+
+        // 🎊 Create confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 90%, 65%)`;
+                    confetti.style.animationDelay = `${Math.random() * 1}s`;
+                    confettiContainer.appendChild(confetti);
+
+                    if (i % 15 === 0) {
+                        playSound('click');
+                    }
+
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.remove();
+                        }
+                    }, 3000);
+                }, i * 20);
+            }
+        }
+
+        // 🎆 Create fireworks
+        function createFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = `${Math.random() * 100}vw`;
+                    firework.style.top = `${Math.random() * 100}vh`;
+                    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 65%)`;
+                    fireworksContainer.appendChild(firework);
+
+                    playSound('celebrate');
+
+                    setTimeout(() => {
+                        if (firework.parentNode) {
+                            firework.remove();
+                        }
+                    }, 1200);
+                }, i * 200);
+            }
+        }
+
+        // 📝 Type final message with sound
+        function typeFinalMessage() {
+            const messages = CONFIG.FINAL_MESSAGES || ["You just made my entire world brighter."];
+            if (messages.length === 0) {
+                finalTextEl.textContent = "Thank you for saying yes!";
+                return;
+            }
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            let i = 0;
+            isTyping = true;
+
+            function type() {
+                if (i < randomMessage.length) {
+                    finalTextEl.textContent += randomMessage.charAt(i);
+
+                    if (Math.random() > 0.3) {
+                        playSound('type');
+                    }
+
+                    i++;
+                    setTimeout(type, 50);
+                } else {
+                    isTyping = false;
+                }
+            }
+
+            setTimeout(type, 500);
+        }
+
+        // 🔄 Continue celebration effects
+        function continueCelebrationEffects() {
+            // Continue hearts every few seconds
+            setInterval(() => {
+                createHearts();
+            }, 3000);
+
+            // Occasional confetti bursts
+            setInterval(() => {
+                createConfetti();
+            }, 5000);
+
+            // Random fireworks
+            setInterval(() => {
+                createFireworks();
+            }, 2000);
+        }
+
+        // 📤 Share moment using Web Share API
+        function shareMoment() {
+            playSound('click');
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'She Said Yes! 💖',
+                    text: `${CONFIG.HER_NAME} just made me the happiest person in the world!`,
+                    url: window.location.href
+                }).catch(() => {
+                    showShareFallback();
+                });
+            } else {
+                showShareFallback();
+            }
+        }
+
+        // 📋 Fallback share dialog
+        function showShareFallback() {
+            const url = window.location.href;
+            const text = `${CONFIG.HER_NAME} just made me the happiest person in the world! Check out this romantic website!`;
+
+            navigator.clipboard.writeText(`${text}\n\n${url}`).then(() => {
+                shareBtn.textContent = 'Link Copied! 📋';
+                setTimeout(() => {
+                    shareBtn.textContent = 'Share This Moment 💌';
+                }, 2000);
+            });
+        }
+
+        // 🚀 Start everything when page loads
+        window.addEventListener('DOMContentLoaded', init);
+
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
