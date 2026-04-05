@@ -344,7 +344,7 @@ GitHub: @bibekbista0406
 
 Portfolio: bibekbista.com
 
-LinkedIn: bibek-bista
+LinkedIn: bibekbista0405
 
 About the Author
 Bibek is a passionate developer with expertise in creating interactive web applications and real-time systems. He believes in building software that combines aesthetic design with robust functionality.
@@ -362,7 +362,7 @@ Following for updates on future projects
 
 Note: While credit is always appreciated, it's not required. Feel free to use and modify this project according to the MIT License terms.
 
-Built with ❤️ by Bibek Bista | Last Updated: March 2024
+Built with ❤️ by Bibek Bista | Last Updated: April 3 2026
 
 text
 
