@@ -364,6 +364,13 @@ Note: While credit is always appreciated, it's not required. Feel free to use an
 
 Built with ❤️ by Bibek Bista | Last Updated: April 3 2026
 
-text
-
+/*
+ * ==================================================
+ * Credit request (not legally required by MIT License)
+ * If you use this code or modifications of it on a website,
+ * please give credit to bibekbbista0405.
+ * Example: "Powered by bibekbbista0405" in your footer.
+ * Thank you!
+ * ==================================================
+ */
 This README provides a comprehensive, professional overview of the project while maintaining a clean, modern aesthetic. It covers all technical aspects, setup instructions, and features while giving proper credit to the author. The tone is professional yet approachable, making it suitable for GitHub and other development platforms.
