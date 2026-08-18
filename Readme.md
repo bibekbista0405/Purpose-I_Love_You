@@ -362,7 +362,7 @@ Following for updates on future projects
 
 Note: While credit is always appreciated, it's not required. Feel free to use and modify this project according to the MIT License terms.
 
-Built with ❤️ by Bibek Bista | Last Updated: April 3 2026
+Crafterd by Bibek Bista | Last Updated: April 3 2026
 
 /*
  * ==================================================
